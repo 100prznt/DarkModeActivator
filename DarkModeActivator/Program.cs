@@ -60,7 +60,6 @@ namespace Rca.DarkModeActivator
                 Console.ResetColor();
             }
 
-
             if (!autoClose)
             {
                 Console.WriteLine("Press any key to close...");
