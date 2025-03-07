@@ -6,8 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Company>RC-Art Solutions</Company>
-    <Description>Enable the darkmode for Autodesk Fusion</Description>
-    <Copyright>RC-Art Solutions 2025</Copyright>
+    <Description>Enable the Darkmode for Autodesk Fusion</Description>
+    <Copyright>Copyright (c) 2025 RC-Art Solutions</Copyright>
     <PackageProjectUrl>https://github.com/100prznt/DarkModeActivator</PackageProjectUrl>
     <Version>1.0.1</Version>
     <AssemblyVersion>1.0.0.1</AssemblyVersion>

@@ -6,6 +6,10 @@ namespace Rca.DarkModeActivator
 {
     static class Program
     {
+        /// <summary>
+        /// Patch theme-featurepacks.xml to enable the dark mode in Autodesk Fusion.
+        /// </summary>
+        /// <param name="args">AutoClose: Close the commandline window after execution.</param>
         public static void Main(string[] args)
         {
             #region Startup
@@ -13,7 +17,7 @@ namespace Rca.DarkModeActivator
             var attribute = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false).Cast<AssemblyDescriptionAttribute>().FirstOrDefault();
             var appName = $"{typeof(Program).Assembly.GetName().Name} v{versionInfo.ProductVersion}";
 
-            Console.Title = appName;
+            Console.Title = "DMA";
 
             Console.WriteLine();
             Console.BackgroundColor = ConsoleColor.Gray;
@@ -24,14 +28,14 @@ namespace Rca.DarkModeActivator
                 Console.WriteLine(attribute.Description);
             Console.WriteLine();
             Console.WriteLine(versionInfo.LegalCopyright);
-            Console.WriteLine(String.Empty.PadLeft(80, '-'));
+            Console.WriteLine(String.Empty.PadLeft(72, '-'));
             Console.WriteLine();
             #endregion
-
+            
             var autoClose = false;
 
             if (args.Length == 0)
-                autoClose = args.Any(x => string.Equals(x, "autoclose", StringComparison.OrdinalIgnoreCase));
+                autoClose = args.Any(x => string.Equals(x, "AutoClose", StringComparison.OrdinalIgnoreCase));
 
             var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var rootPath = Path.Combine(path, "Autodesk", "webdeploy", "production");
@@ -51,42 +55,52 @@ namespace Rca.DarkModeActivator
                             if (uiThemeElement is not null && !string.Equals(uiThemeElement.Attribute("Default")?.Value, "True", StringComparison.OrdinalIgnoreCase))
                             {
                                 uiThemeElement.Attribute("Default").Value = "True";
-                                Console.ForegroundColor = ConsoleColor.Green;
-                                Console.WriteLine("Darkmode successfully enabled.");
+                                WriteLine("theme-featurepacks.xml successfully patched, Darkmode is enabled.", ConsoleColor.Green);
                             }
                             else
-                            {
-                                Console.ForegroundColor = ConsoleColor.Cyan;
-                                Console.WriteLine("Darkmode is already enabled.");
-                            }
+                                WriteLine("theme-featurepacks.xml is already patched, Darkmode is enabled.", ConsoleColor.Cyan);
 
                             xmlFile.Save(featurepackXmlPath);
                         }
                         catch (Exception ex)
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Console.WriteLine($"Access to {featurepackXmlPath} failed with exception:");
-                            Console.WriteLine(ex.ToString());
-                        }
-                        finally
-                        {
-                            Console.ResetColor();
+                            WriteLine($"Access to {featurepackXmlPath} failed with exception:", ConsoleColor.Red);
+                            WriteLine(ex.ToString());
                         }
                     }
                 }
             }
             else
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"Local app directory not found, expected path: {rootPath}");
-                Console.ResetColor();
-            }
+                WriteLine($"Local app directory not found, expected path: {rootPath}", ConsoleColor.Red);
 
             if (!autoClose)
             {
-                Console.WriteLine("Press any key to close...");
+                WriteLine();
+                WriteLine(string.Empty.PadLeft(72, '-'));
+                WriteLine("Press any key to close...");
                 Console.ReadKey();
             }
+        }
+
+        /// <summary>
+        /// Writes the specified string value to the console.
+        /// </summary>
+        private static void WriteLine() => Console.WriteLine();
+
+        /// <summary>
+        /// Writes the specified string value to the console with the specified color.
+        /// </summary>
+        /// <param name="message">Message to print out</param>
+        /// <param name="color">Foreground color</param>
+        private static void WriteLine(string message, ConsoleColor? color = null)
+        {
+            if (color.HasValue)
+                Console.ForegroundColor = color.Value;
+
+            Console.WriteLine(message);
+
+            if (color.HasValue)
+                Console.ResetColor();
         }
     }
 }
