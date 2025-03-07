@@ -1,0 +1,27 @@
+version: 1.0.{build}
+image: Visual Studio 2022
+configuration: Release
+only_commits:
+  message: /\[ci\]/
+skip_commits:
+  files:
+    - docu/
+    - '**/*.md'
+    - '*.txt'
+    - appveyor.yml
+    - LICENSE.txt
+    - '.gitignor'
+before_build:
+- cmd: nuget restore
+build:
+  verbosity: minimal
+after_build:
+- cmd: 7z a DarkModeActivator-%APPVEYOR_BUILD_VERSION%.zip %APPVEYOR_BUILD_FOLDER%\DarkModeActivator\bin\Release\net8.0\*.*
+artifacts:
+- path: DarkModeActivator-%APPVEYOR_BUILD_VERSION%.zip
+  name: DarkModeActivator
+deploy:
+- provider: GitHub
+  auth_token:
+    secure: LprsSeYQlaK3+EorcwvQ13w66LtJEPixbWnpL54ucz/8u7kCC7y2mkJOj4aOFikc
+  artifact: DarkModeActivator
