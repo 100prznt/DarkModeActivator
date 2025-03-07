@@ -8,8 +8,10 @@ Because the settings are reset every time Fusion is updated. You can create a sc
 [![Build status](https://ci.appveyor.com/api/projects/status/796cmu93otgnva0r?svg=true)](https://ci.appveyor.com/project/100prznt/darkmodeactivator)
 
 
-## Darkmode preview
+## Darkmode setup in Fusion
 ![darkmode.gif](docu/darkmode.gif)
+
+The background of the drawing area can be set individually (to a dark color). The options can be found via the icons at the bottom center of the drawing area.
 
 
 ## Details
