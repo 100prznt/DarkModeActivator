@@ -29,28 +29,41 @@ namespace Rca.DarkModeActivator
                             if (!string.Equals(uiThemeElement.Attribute("Default").Value, "True", StringComparison.OrdinalIgnoreCase))
                             {
                                 uiThemeElement.Attribute("Default").Value = "True";
+                                Console.ForegroundColor = ConsoleColor.Green;
                                 Console.WriteLine("Darkmode successfully enabled.");
                             }
                             else
                             {
+                                Console.ForegroundColor = ConsoleColor.Cyan;
                                 Console.WriteLine("Darkmode is already enabled.");
                             }
+
                             xmlFile.Save(featurepackXmlPath);
                         }
                         catch (Exception ex)
                         {
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine($"Access to {featurepackXmlPath} failed with exception:");
                             Console.WriteLine(ex.ToString());
+                        }
+                        finally
+                        {
+                            Console.ResetColor();
                         }
                     }
                 }
             }
             else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Local app directory not found, expected path: {rootPath}");
+                Console.ResetColor();
+            }
+
 
             if (!autoClose)
             {
-                Console.WriteLine("Press any key to close.");
+                Console.WriteLine("Press any key to close...");
                 Console.ReadKey();
             }
         }
