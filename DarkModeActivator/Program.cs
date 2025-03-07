@@ -1,4 +1,6 @@
-﻿using System.Xml.Linq;
+﻿using System.Diagnostics;
+using System.Reflection;
+using System.Xml.Linq;
 
 namespace Rca.DarkModeActivator
 {
@@ -6,6 +8,26 @@ namespace Rca.DarkModeActivator
     {
         public static void Main(string[] args)
         {
+            #region Startup
+            var versionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetEntryAssembly().Location);
+            var attribute = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false).Cast<AssemblyDescriptionAttribute>().FirstOrDefault();
+            var appName = $"{typeof(Program).Assembly.GetName().Name} v{versionInfo.ProductVersion}";
+
+            Console.Title = appName;
+
+            Console.WriteLine();
+            Console.BackgroundColor = ConsoleColor.Gray;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.WriteLine(appName);
+            Console.ResetColor();
+            if (attribute is not null)
+                Console.WriteLine(attribute.Description);
+            Console.WriteLine();
+            Console.WriteLine(versionInfo.LegalCopyright);
+            Console.WriteLine(String.Empty.PadLeft(80, '-'));
+            Console.WriteLine();
+            #endregion
+
             var autoClose = false;
 
             if (args.Length == 0)
