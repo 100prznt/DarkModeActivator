@@ -9,9 +9,6 @@
     <Description>Enable the darkmode for Autodesk Fusion</Description>
     <Copyright>RC-Art Solutions 2025</Copyright>
     <PackageProjectUrl>https://github.com/100prznt/DarkModeActivator</PackageProjectUrl>
-    <Version>1.0.1</Version>
-    <AssemblyVersion>1.0.0.1</AssemblyVersion>
-    <FileVersion>1.0.0.1</FileVersion>
   </PropertyGroup>
 
 </Project>
