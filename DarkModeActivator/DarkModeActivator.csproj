@@ -5,6 +5,14 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Company>RC-Art Solutions</Company>
+    <Description>Enable the darkmode for Autodesk Fusion</Description>
+    <Copyright>RC-Art Solutions 2025</Copyright>
+    <PackageProjectUrl>https://github.com/100prznt/DarkModeActivator</PackageProjectUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" />
+  </ItemGroup>
 
 </Project>
