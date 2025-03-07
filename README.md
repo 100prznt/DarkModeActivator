@@ -1,4 +1,4 @@
-# DarkModeActivator
+# DarkModeActivator :first_quarter_moon:
  Enable the __Darkmode__ for __Autodesk Fusion__
 
 ## How to use
