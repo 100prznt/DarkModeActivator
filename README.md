@@ -13,6 +13,8 @@ Because the settings are reset every time Fusion is updated. You can create a sc
 
 
 ## Details
+This section only describes what DMA (DarkModeActivator) does. It is __not__ necessary to adapt any xml files yourself.
+
 The tool searches for a configuration file of the Neutron UI Toolkit and activates the option to use the dark mode feature. The file is located in the current deploy directory (```%localappdata%\Autodesk\webdeploy\production\<GUID>```) under the path ```Neutron\UI\Base\Resources\UIToolkit\theme-featurepacks.xml```.
 
 #### theme-featurepacks.xml
