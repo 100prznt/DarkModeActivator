@@ -35,6 +35,9 @@ if (Directory.Exists(rootPath))
     }
 }
 else
-    Console.WriteLine($"Local app directories not found, expected path: {rootPath}");
+    Console.WriteLine($"Local app directory not found, expected path: {rootPath}");
+
+Console.WriteLine("Press any key to close.");
+Console.ReadKey();
 
 
