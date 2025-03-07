@@ -5,6 +5,15 @@ branches:
 skip_tags: true
 image: Visual Studio 2022
 configuration: Release
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  version: '{version}'
+  version_prefix: '{version}'
+  package_version: '{version}'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
 only_commits:
   message: /\[ci\]/
 skip_commits:
