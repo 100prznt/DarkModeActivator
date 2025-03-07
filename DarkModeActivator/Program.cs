@@ -9,7 +9,7 @@ namespace Rca.DarkModeActivator
             var autoClose = false;
 
             if (args.Length == 0)
-                autoClose = args.Any(x => string.Equals(x, "autoclose", StringComparison.OrdinalIgnoreCase);
+                autoClose = args.Any(x => string.Equals(x, "autoclose", StringComparison.OrdinalIgnoreCase));
 
             var path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             var rootPath = Path.Combine(path, "Autodesk", "webdeploy", "production");
