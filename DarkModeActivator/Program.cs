@@ -24,9 +24,9 @@ namespace Rca.DarkModeActivator
                         try
                         {
                             var xmlFile = XDocument.Load(featurepackXmlPath);
-                            var uiThemeElement = xmlFile.Element("FeaturePacks").Element("FeaturePack").Element("Features").Element("Feature");
+                            var uiThemeElement = xmlFile?.Element("FeaturePacks")?.Element("FeaturePack")?.Element("Features")?.Element("Feature");
 
-                            if (!string.Equals(uiThemeElement.Attribute("Default").Value, "True", StringComparison.OrdinalIgnoreCase))
+                            if (uiThemeElement is not null && !string.Equals(uiThemeElement.Attribute("Default")?.Value, "True", StringComparison.OrdinalIgnoreCase))
                             {
                                 uiThemeElement.Attribute("Default").Value = "True";
                                 Console.ForegroundColor = ConsoleColor.Green;
