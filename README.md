@@ -1,5 +1,5 @@
-# DarkModeActivator :first_quarter_moon:
- Enable the __Darkmode__ for __Autodesk Fusion__
+# DarkModeActivator
+ Enable the __Darkmode__ for __Autodesk Fusion__ :first_quarter_moon:
 
 ## How to use
 Download the [current release](https://github.com/100prznt/DarkModeActivator/releases/latest) and copy all files from the zip archive in a directory without access restrictions (e.g. `C:/Program Files/DarkModeActivator`). After the DarkModeActivator.exe has been executed, the dark mode can be selected in the Autodesk Fusion preferences.
