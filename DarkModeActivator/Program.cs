@@ -77,7 +77,7 @@ namespace Rca.DarkModeActivator
             {
                 WriteLine();
                 WriteLine(string.Empty.PadLeft(72, '-'));
-                WriteLine("Press any key to close...");
+                Console.Write("Press any key to close...");
                 Console.ReadKey();
             }
         }
